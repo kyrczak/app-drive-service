@@ -8,7 +8,7 @@ import java.util.Objects;
 @Builder
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "charactersList")
 @AllArgsConstructor
 public class Profession implements Comparable {
     private String name;
@@ -30,11 +30,6 @@ public class Profession implements Comparable {
     }
 
     public void addCharacter(Characters characters) {
-        if(Objects.equals(characters.getProfession().toString(), this.name)) {
-            this.charactersList.add(characters);
-        }
-        else {
-            System.out.println("Incorrect character's profession");
-        }
+        this.getCharactersList().add(characters);
     }
 }

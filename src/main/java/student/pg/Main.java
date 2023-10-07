@@ -1,6 +1,9 @@
 package student.pg;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,8 +51,31 @@ public class Main {
         fisherman.addCharacter(kendrick);
         fisherman.addCharacter(monica);
 
-        //Using single StreamAPI pipeline create Set collections of all professions and all characters
+        // Task 2
+        //Using single Stream API pipeline create a Set collection of all elements from all charactersList of all professions
+        //and print it out.
 
+        Set<Characters> charactersSet = List.of(lumberjack, fisherman).stream()
+                .flatMap(profession -> profession.getCharactersList().stream())
+                .collect(Collectors.toSet());
+        System.out.println(charactersSet);
+
+        // Task 3
+        List<Characters> filteredCharacters = charactersSet.stream()
+                .filter(characters -> characters.getLevel() > 20)
+                .sorted()
+                .toList();
+        System.out.println(filteredCharacters);
+        System.out.println();
+        // Task 4
+        List<CharacterDto> characterDtoList = charactersSet.stream()
+                .map(characters -> CharacterDto.builder()
+                        .name(characters.getName())
+                        .level(characters.getLevel())
+                        .profession(characters.getProfession().getName())
+                        .build())
+                .sorted()
+                .toList();
 
     }
 }

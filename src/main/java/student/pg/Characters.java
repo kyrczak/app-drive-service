@@ -25,7 +25,7 @@ public class Characters implements Comparable {
         return "Characters{" +
                 "name='" + getName() + '\'' +
                 ", level=" + getLevel() +
-                ", profession=" + getProfession() +
+                ", profession=" + getProfession().getName() +
                 '}';
     }
 }
