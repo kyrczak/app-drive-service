@@ -2,15 +2,15 @@ package student.pg;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 @Builder
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = "charactersList")
 @AllArgsConstructor
-public class Profession implements Comparable {
+public class Profession implements Comparable, Serializable {
     private String name;
     private int baseArmor;
     private List<Characters> charactersList;

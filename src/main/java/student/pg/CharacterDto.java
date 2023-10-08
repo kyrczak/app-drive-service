@@ -16,7 +16,7 @@ public class CharacterDto implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        Characters c = (Characters) o;
+        CharacterDto c = (CharacterDto) o;
         return this.getLevel() - c.getLevel();
     }
 

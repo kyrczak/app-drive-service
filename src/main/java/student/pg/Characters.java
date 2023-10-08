@@ -1,15 +1,17 @@
 package student.pg;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Objects;
+import java.io.Serializable;
 
 @Builder
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Characters implements Comparable {
+public class Characters implements Comparable, Serializable {
     private String name;
     private int level;
     private Profession profession;
@@ -28,4 +30,5 @@ public class Characters implements Comparable {
                 ", profession=" + getProfession().getName() +
                 '}';
     }
+
 }
