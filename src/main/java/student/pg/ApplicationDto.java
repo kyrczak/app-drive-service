@@ -9,23 +9,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class CharacterDto implements Comparable {
+public class ApplicationDto implements Comparable {
     String name;
     int level;
     String profession;
 
     @Override
     public int compareTo(Object o) {
-        CharacterDto c = (CharacterDto) o;
+        ApplicationDto c = (ApplicationDto) o;
         return this.getLevel() - c.getLevel();
     }
 
     @Override
     public String toString() {
-        return "CharacterDto{" +
+        return "ApplicationDto{" +
                 "name='" + name + '\'' +
                 ", level=" + level +
-                ", profession='" + profession + '\'' +
+                ", floppyDisk='" + profession + '\'' +
                 '}';
     }
 }

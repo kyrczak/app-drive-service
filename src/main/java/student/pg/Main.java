@@ -11,60 +11,60 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         // Task 2
-        Profession lumberjack = Profession.builder()
-                .name("Lumberjack")
-                .baseArmor(20)
-                .charactersList(new LinkedList<>())
+        FloppyDisk software = FloppyDisk.builder()
+                .name("Software")
+                .diskSize(20)
+                .applicationList(new LinkedList<>())
                 .build();
-        Profession fisherman = Profession.builder()
-                .name("Fisherman")
-                .baseArmor(10)
-                .charactersList(new LinkedList<>())
-                .build();
-
-        Characters anna = Characters.builder()
-                .name("Anna")
-                .level(18)
-                .profession(lumberjack)
-                .build();
-        Characters tom = Characters.builder()
-                .name("Tom")
-                .level(20)
-                .profession(lumberjack)
-                .build();
-        Characters patrick = Characters.builder()
-                .name("Patrick")
-                .level(21)
-                .profession(fisherman)
-                .build();
-        Characters kendrick = Characters.builder()
-                .name("Kendrick")
-                .level(28)
-                .profession(fisherman)
-                .build();
-        Characters monica = Characters.builder()
-                .name("Monica")
-                .level(22)
-                .profession(fisherman)
+        FloppyDisk firmware = FloppyDisk.builder()
+                .name("Firmware")
+                .diskSize(10)
+                .applicationList(new LinkedList<>())
                 .build();
 
-        lumberjack.addCharacter(anna);
-        lumberjack.addCharacter(tom);
-        fisherman.addCharacter(patrick);
-        fisherman.addCharacter(kendrick);
-        fisherman.addCharacter(monica);
+        Application application1 = Application.builder()
+                .name("Painting app")
+                .applicationSize(18)
+                .floppyDisk(software)
+                .build();
+        Application application2 = Application.builder()
+                .name("Writing app")
+                .applicationSize(20)
+                .floppyDisk(software)
+                .build();
+        Application application3 = Application.builder()
+                .name("Printer firmware")
+                .applicationSize(21)
+                .floppyDisk(firmware)
+                .build();
+        Application application4 = Application.builder()
+                .name("Microphone firmware")
+                .applicationSize(28)
+                .floppyDisk(firmware)
+                .build();
+        Application application5 = Application.builder()
+                .name("Keyboard firmware")
+                .applicationSize(22)
+                .floppyDisk(firmware)
+                .build();
+
+        software.addCharacter(application1);
+        software.addCharacter(application2);
+        firmware.addCharacter(application3);
+        firmware.addCharacter(application4);
+        firmware.addCharacter(application5);
 
         // Task 3
         System.out.println("Task 3");
-        Set<Characters> charactersSet = List.of(lumberjack, fisherman).stream()
-                .flatMap(profession -> profession.getCharactersList().stream())
+        Set<Application> applicationSet = List.of(software, firmware).stream()
+                .flatMap(floppyDisk -> floppyDisk.getApplicationList().stream())
                 .collect(Collectors.toSet());
-        System.out.println(charactersSet);
+        System.out.println(applicationSet);
 
         // Task 4
         System.out.println("Task 4");
-        List<Characters> filteredCharacters = charactersSet.stream()
-                .filter(characters -> characters.getLevel() > 20)
+        List<Application> filteredCharacters = applicationSet.stream()
+                .filter(application -> application.getApplicationSize() > 20)
                 .sorted()
                 .toList();
         System.out.println(filteredCharacters);
@@ -72,46 +72,46 @@ public class Main {
 
         // Task 5
         System.out.println("Task 5");
-        List<CharacterDto> characterDtoList = charactersSet.stream()
-                .map(characters -> CharacterDto.builder()
-                        .name(characters.getName())
-                        .level(characters.getLevel())
-                        .profession(characters.getProfession().getName())
+        List<ApplicationDto> applicationDtoList = applicationSet.stream()
+                .map(application -> ApplicationDto.builder()
+                        .name(application.getName())
+                        .level(application.getApplicationSize())
+                        .profession(application.getFloppyDisk().getName())
                         .build())
                 .sorted()
                 .toList();
-        System.out.println(characterDtoList);
+        System.out.println(applicationDtoList);
 
         // Task 6
         System.out.println("Task 6");
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("professions.bin"))) {
-            oos.writeObject(List.of(lumberjack, fisherman));
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("floppyDisks.bin"))) {
+            oos.writeObject(List.of(software, firmware));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("professions.bin"))) {
-            List<Profession> professions = (List<Profession>) ois.readObject();
-            professions.forEach(System.out::println);
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("floppyDisks.bin"))) {
+            List<FloppyDisk> floppyDisks = (List<FloppyDisk>) ois.readObject();
+            floppyDisks.forEach(System.out::println);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         // Task 7
         System.out.println("Task 7");
-        ForkJoinPool pool = new ForkJoinPool(1);
-        Collection<Profession> professions = List.of(lumberjack, fisherman);
+        ForkJoinPool pool = new ForkJoinPool(3);
+        Collection<FloppyDisk> floppyDisks = List.of(software, firmware);
         try {
             pool.submit(() -> {
-                professions.stream()
+                floppyDisks.stream()
                         .parallel()
-                        .forEach(profession -> {
+                        .forEach(floppyDisk -> {
                             try {
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }
-                            System.out.println(profession);
+                            System.out.println(floppyDisk);
                         });
             }).get();
         } catch (Exception e) {

@@ -11,23 +11,23 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Characters implements Comparable, Serializable {
+public class Application implements Comparable, Serializable {
     private String name;
-    private int level;
-    private Profession profession;
+    private int applicationSize;
+    private FloppyDisk floppyDisk;
 
     @Override
     public int compareTo(Object o) {
-        Characters c = (Characters) o;
-        return this.getLevel() - c.getLevel();
+        Application c = (Application) o;
+        return this.getApplicationSize() - c.getApplicationSize();
     }
 
     @Override
     public String toString() {
-        return "Characters{" +
+        return "Application{" +
                 "name='" + getName() + '\'' +
-                ", level=" + getLevel() +
-                ", profession=" + getProfession().getName() +
+                ", level=" + getApplicationSize() +
+                ", floppyDisk=" + getFloppyDisk().getName() +
                 '}';
     }
 
