@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         // Task 2
+        System.out.println("Task 2");
+
         Disk software = Disk.builder()
                 .name("Software")
                 .diskSize(20)
@@ -54,6 +56,14 @@ public class Main {
         firmware.addCharacter(application4);
         firmware.addCharacter(application5);
 
+        Collection<Disk> diskCollection = new LinkedList<>();
+        diskCollection.add(software);
+        diskCollection.add(firmware);
+
+        diskCollection.forEach(disk -> {
+            System.out.println(disk);
+        });
+
         // Task 3
         System.out.println("Task 3");
         Set<Application> applicationSet = List.of(software, firmware).stream()
@@ -76,7 +86,7 @@ public class Main {
                 .map(application -> ApplicationDto.builder()
                         .name(application.getName())
                         .level(application.getApplicationSize())
-                        .profession(application.getDisk().getName())
+                        .disk(application.getDisk().getName())
                         .build())
                 .sorted()
                 .toList();

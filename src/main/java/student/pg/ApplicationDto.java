@@ -12,7 +12,7 @@ import lombok.Setter;
 public class ApplicationDto implements Comparable {
     String name;
     int level;
-    String profession;
+    String disk;
 
     @Override
     public int compareTo(Object o) {
@@ -25,7 +25,7 @@ public class ApplicationDto implements Comparable {
         return "ApplicationDto{" +
                 "name='" + name + '\'' +
                 ", level=" + level +
-                ", disk='" + profession + '\'' +
+                ", disk='" + disk + '\'' +
                 '}';
     }
 }
