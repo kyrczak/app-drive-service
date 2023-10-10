@@ -10,14 +10,14 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(exclude = "applicationList")
 @AllArgsConstructor
-public class FloppyDisk implements Comparable, Serializable {
+public class Disk implements Comparable, Serializable {
     private String name;
     private int diskSize;
     private List<Application> applicationList;
 
     @Override
     public String toString() {
-        return "FloppyDisk{" +
+        return "Disk{" +
                 "name='" + name + '\'' +
                 ", baseArmor=" + diskSize +
                 ", applicationList=" + applicationList +
@@ -25,7 +25,7 @@ public class FloppyDisk implements Comparable, Serializable {
     }
     @Override
     public int compareTo(Object o) {
-        FloppyDisk p = (FloppyDisk) o;
+        Disk p = (Disk) o;
         return this.getDiskSize() - p.getDiskSize();
     }
 

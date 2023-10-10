@@ -25,7 +25,7 @@ public class ApplicationDto implements Comparable {
         return "ApplicationDto{" +
                 "name='" + name + '\'' +
                 ", level=" + level +
-                ", floppyDisk='" + profession + '\'' +
+                ", disk='" + profession + '\'' +
                 '}';
     }
 }

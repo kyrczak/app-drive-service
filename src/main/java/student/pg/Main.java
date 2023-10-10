@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         // Task 2
-        FloppyDisk software = FloppyDisk.builder()
+        Disk software = Disk.builder()
                 .name("Software")
                 .diskSize(20)
                 .applicationList(new LinkedList<>())
                 .build();
-        FloppyDisk firmware = FloppyDisk.builder()
+        Disk firmware = Disk.builder()
                 .name("Firmware")
                 .diskSize(10)
                 .applicationList(new LinkedList<>())
@@ -25,27 +25,27 @@ public class Main {
         Application application1 = Application.builder()
                 .name("Painting app")
                 .applicationSize(18)
-                .floppyDisk(software)
+                .disk(software)
                 .build();
         Application application2 = Application.builder()
                 .name("Writing app")
                 .applicationSize(20)
-                .floppyDisk(software)
+                .disk(software)
                 .build();
         Application application3 = Application.builder()
                 .name("Printer firmware")
                 .applicationSize(21)
-                .floppyDisk(firmware)
+                .disk(firmware)
                 .build();
         Application application4 = Application.builder()
                 .name("Microphone firmware")
                 .applicationSize(28)
-                .floppyDisk(firmware)
+                .disk(firmware)
                 .build();
         Application application5 = Application.builder()
                 .name("Keyboard firmware")
                 .applicationSize(22)
-                .floppyDisk(firmware)
+                .disk(firmware)
                 .build();
 
         software.addCharacter(application1);
@@ -57,7 +57,7 @@ public class Main {
         // Task 3
         System.out.println("Task 3");
         Set<Application> applicationSet = List.of(software, firmware).stream()
-                .flatMap(floppyDisk -> floppyDisk.getApplicationList().stream())
+                .flatMap(disk -> disk.getApplicationList().stream())
                 .collect(Collectors.toSet());
         System.out.println(applicationSet);
 
@@ -76,7 +76,7 @@ public class Main {
                 .map(application -> ApplicationDto.builder()
                         .name(application.getName())
                         .level(application.getApplicationSize())
-                        .profession(application.getFloppyDisk().getName())
+                        .profession(application.getDisk().getName())
                         .build())
                 .sorted()
                 .toList();
@@ -84,15 +84,15 @@ public class Main {
 
         // Task 6
         System.out.println("Task 6");
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("floppyDisks.bin"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("disks.bin"))) {
             oos.writeObject(List.of(software, firmware));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("floppyDisks.bin"))) {
-            List<FloppyDisk> floppyDisks = (List<FloppyDisk>) ois.readObject();
-            floppyDisks.forEach(System.out::println);
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("disks.bin"))) {
+            List<Disk> disks = (List<Disk>) ois.readObject();
+            disks.forEach(System.out::println);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -100,22 +100,29 @@ public class Main {
         // Task 7
         System.out.println("Task 7");
         ForkJoinPool pool = new ForkJoinPool(3);
-        Collection<FloppyDisk> floppyDisks = List.of(software, firmware);
+        Collection<Disk> disks = List.of(software, firmware);
         try {
             pool.submit(() -> {
-                floppyDisks.stream()
+                disks.stream()
                         .parallel()
-                        .forEach(floppyDisk -> {
-                            try {
-                                Thread.sleep(1500);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                            System.out.println(floppyDisk);
+                        .forEach(disk -> {
+                            disk.getApplicationList().forEach(
+                                    application -> {
+                                        try {
+                                            Thread.sleep(1500);
+                                            System.out.println(disk);
+                                        } catch (InterruptedException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    }
+                            );
+
                         });
             }).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        pool.shutdown();
     }
 }

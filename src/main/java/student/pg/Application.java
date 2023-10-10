@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Application implements Comparable, Serializable {
     private String name;
     private int applicationSize;
-    private FloppyDisk floppyDisk;
+    private Disk disk;
 
     @Override
     public int compareTo(Object o) {
@@ -27,7 +27,7 @@ public class Application implements Comparable, Serializable {
         return "Application{" +
                 "name='" + getName() + '\'' +
                 ", level=" + getApplicationSize() +
-                ", floppyDisk=" + getFloppyDisk().getName() +
+                ", disk=" + getDisk().getName() +
                 '}';
     }
 
