@@ -10,6 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, UUID> {
-    Optional<Application> findApplicationByNameAnAndApplicationSize(String name, int applicationSize);
-    Optional<Application> findApplicationByDisk(Disk disk);
+    Optional<Application> findApplicationByName(String name);
 }

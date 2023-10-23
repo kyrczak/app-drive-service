@@ -2,19 +2,23 @@ package pg.student.aui_spring.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.UUID;
 
+@SuperBuilder
 @Getter
 @Setter
 @EqualsAndHashCode
+@ToString
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "applications")
 public class Application implements Comparable, Serializable {
     @Id
+    @ToString.Exclude
     private UUID uuid;
     @Column
     private String name;
@@ -29,14 +33,4 @@ public class Application implements Comparable, Serializable {
         Application c = (Application) o;
         return this.getApplicationSize() - c.getApplicationSize();
     }
-
-    @Override
-    public String toString() {
-        return "Application{" +
-                "name='" + getName() + '\'' +
-                ", applicationSize=" + getApplicationSize() +
-                ", disk=" + getDisk().getName() +
-                '}';
-    }
-
 }

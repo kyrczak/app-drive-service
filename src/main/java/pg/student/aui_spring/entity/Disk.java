@@ -9,40 +9,31 @@ import java.util.UUID;
 @Builder
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = "applicationList")
+@EqualsAndHashCode()
+@ToString
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "disks")
 public class Disk implements Comparable, Serializable {
     @Id
+    @ToString.Exclude
     private UUID uuid;
 
     @Column
     private String name;
+
     @Column(name = "disk_size")
     private int diskSize;
+
     @OneToMany(mappedBy = "disk")
-    private List<Application> applicationList;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Application> applications;
 
-    public Disk() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Disk{" +
-                "name='" + name + '\'' +
-                ", diskSize=" + diskSize +
-                ", applicationList=" + applicationList +
-                '}';
-    }
     @Override
     public int compareTo(Object o) {
         Disk p = (Disk) o;
         return this.getDiskSize() - p.getDiskSize();
-    }
-
-    public void addCharacter(Application application) {
-        this.getApplicationList().add(application);
     }
 }
