@@ -36,10 +36,10 @@ public class ApplicationCommandLineInterface implements CommandLineRunner {
             command = scanner.next();
             switch (command) {
                 case "1" -> {
-                    System.out.println(applicationService.findAll());
+                    applicationService.findAll().forEach(System.out::println);
                 }
                 case "2" -> {
-                    System.out.println(diskService.findAll());
+                    diskService.findAll().forEach(System.out::println);
                 }
                 case "3" -> {
                     UUID uuid = UUID.randomUUID();
@@ -58,6 +58,7 @@ public class ApplicationCommandLineInterface implements CommandLineRunner {
                     applicationService.create(application);
                 }
                 case "4" -> {
+                    System.out.print("Please input application name to delete: ");
                     String appName = scanner.next();
                     applicationService.delete(appName);
                 }
