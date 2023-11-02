@@ -18,6 +18,9 @@ public class ApplicationService {
     public void create(Application application) {
         repository.save(application);
     }
+    public Optional<Application> find(String name) {
+        return repository.findApplicationByName(name);
+    }
     public List<Application> findAll() {
         return repository.findAll();
     }
