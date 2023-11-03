@@ -26,7 +26,7 @@ public class InitializeData implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if (diskService.find("software").isEmpty()) {
+        if (diskService.findByName("software").isEmpty()) {
             Disk software = Disk.builder()
                     .uuid(UUID.randomUUID())
                     .name("software")

@@ -1,6 +1,5 @@
 package pg.student.aui_spring.cli;
 
-import ch.qos.logback.core.net.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -52,7 +51,7 @@ public class ApplicationCommandLineInterface implements CommandLineRunner {
                     Application application = Application.builder()
                             .uuid(uuid)
                             .name(name)
-                            .disk(diskService.find(disk).orElseThrow(NoSuchElementException::new))
+                            .disk(diskService.findByName(disk).orElseThrow(NoSuchElementException::new))
                             .applicationSize(appSize)
                             .build();
                     applicationService.create(application);
