@@ -29,9 +29,33 @@ Content-Type: application/json
 {
   "name": "Minecraft",
   "size": 12,
+  "disk": "012f799c-8754-4c5d-a997-a9cf83b5ffa1"
+}
+
+### Create new application, existing
+
+PUT http://localhost:8080/api/applications/599d305d-4884-4e45-9625-d47e3917950b
+Content-Type: application/json
+
+{
+  "name": "Counter-Strike 2",
+  "size": 52,
   "disk": "012f799c-8754-4c5d-a997-a9cf83b5ff41"
+}
+### Update application
+
+PATCH http://localhost:8080/api/applications/599d305d-4884-4e45-9625-d47e3917950b
+Content-Type: application/json
+
+{
+  "name": "Paint",
+  "size": 10
 }
 
 ### Delete application
 
 DELETE http://localhost:8080/api/applications/e12e3cdc-2b9e-4e83-9a7c-4aac3a7a1191
+
+### Delete disk
+
+DELETE http://localhost:8080/api/disks/053073ac-6189-411b-b4f8-513742a2b3b1

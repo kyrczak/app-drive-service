@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pg.student.aui_spring.dto.GetApplicationResponse;
 import pg.student.aui_spring.dto.GetApplicationsResponse;
+import pg.student.aui_spring.dto.PatchApplicationRequest;
 import pg.student.aui_spring.dto.PutApplicationRequest;
+import pg.student.aui_spring.entity.Application;
 import pg.student.aui_spring.function.ApplicationToResponseFunction;
 import pg.student.aui_spring.function.ApplicationsToResponseFunction;
 import pg.student.aui_spring.function.RequestToApplicationFunction;
@@ -63,7 +65,27 @@ public class ApplicationDefaultController implements ApplicationController{
 
     @Override
     public void putApplication(UUID id, PutApplicationRequest request) {
-        service.create(requestToApplication.apply(id,request));
+        service.find(id).ifPresentOrElse(
+                application -> {throw new ResponseStatusException(HttpStatus.BAD_REQUEST);},
+                () -> {
+                    service.create(requestToApplication.apply(id,request));
+                }
+        );
+    }
+
+    @Override
+    public void updateApplication(UUID id, PatchApplicationRequest request) {
+        service.find(id).ifPresentOrElse(
+                application -> {
+                    application.setName(request.getName());
+                    application.setApplicationSize(request.getSize());
+                    service.update(application);
+                },
+                () -> {
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                }
+
+        );
     }
 
     @Override

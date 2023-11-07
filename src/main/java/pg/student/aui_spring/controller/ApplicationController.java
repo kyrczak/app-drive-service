@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pg.student.aui_spring.dto.GetApplicationResponse;
 import pg.student.aui_spring.dto.GetApplicationsResponse;
+import pg.student.aui_spring.dto.PatchApplicationRequest;
 import pg.student.aui_spring.dto.PutApplicationRequest;
+import pg.student.aui_spring.function.RequestToApplicationFunction;
 
 import java.util.UUID;
 
@@ -48,6 +50,15 @@ public interface ApplicationController {
             UUID id,
             @RequestBody
             PutApplicationRequest request
+    );
+
+    @PatchMapping("/api/applications/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    void updateApplication(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PatchApplicationRequest request
     );
 
     @DeleteMapping("/api/applications/{id}")

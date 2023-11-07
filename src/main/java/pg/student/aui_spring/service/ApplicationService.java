@@ -43,6 +43,10 @@ public class ApplicationService {
         return diskRepository.findById(diskId)
                 .map(repository::findAllByDisk);
     }
+
+    public void update(Application application) {
+        repository.save(application);
+    }
     public void delete(String name) {
         repository.findApplicationByName(name).ifPresent(repository::delete);
     }
