@@ -1,0 +1,24 @@
+### Get all disks
+GET http://localhost:8082/api/disks
+
+### Get single disk
+
+GET http://localhost:8082/api/disks/2e71dcc4-1845-43ea-aa46-22f2b5595a78
+
+### Get single disk, not existing
+
+GET http://localhost:8082/api/applications/adb42754-7bb5-403e-9e2a-626bf75cc9c6
+
+### Delete disk
+
+DELETE http://localhost:8082/api/disks/053073ac-6189-411b-b4f8-513742a2b3b1
+
+### Create disk
+
+PUT http://localhost:8082/api/disks/0dcbbbe6-6585-4d70-adcf-30fd47edee5c
+Content-Type: application/json
+
+{
+  "name": "Music",
+  "size": 128
+}
