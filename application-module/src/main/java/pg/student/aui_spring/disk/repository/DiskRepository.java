@@ -1,7 +1,8 @@
-package pg.student.disk.repository;
+package pg.student.aui_spring.disk.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import pg.student.aui_spring.disk.entity.Disk;
 
 import java.util.Optional;
 import java.util.UUID;

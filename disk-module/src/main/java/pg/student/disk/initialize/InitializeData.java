@@ -3,8 +3,6 @@ package pg.student.disk.initialize;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pg.student.aui_spring.entity.Disk;
-import pg.student.aui_spring.service.DiskService;
 
 import java.util.UUID;
 

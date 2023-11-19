@@ -1,8 +1,7 @@
-package pg.student.aui_spring.function;
+package pg.student.disk.function;
 
 import org.springframework.stereotype.Component;
-import pg.student.aui_spring.dto.PutDiskRequest;
-import pg.student.aui_spring.entity.Disk;
+import pg.student.aui_spring.application.dto.PutDiskRequest;
 
 import java.util.UUID;
 import java.util.function.BiFunction;

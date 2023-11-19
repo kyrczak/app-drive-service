@@ -1,4 +1,4 @@
-package pg.student.disk.controller;
+package pg.student.aui_spring.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pg.student.aui_spring.application.dto.GetDiskResponse;
 import pg.student.aui_spring.application.dto.GetDisksResponse;
-import pg.student.aui_spring.application.dto.PutDiskRequest;
 
 import java.util.UUID;
 
 @RestController
-public class DiskDefaultController implements DiskController{
+public class DiskDefaultController implements DiskController {
         private final DiskService service;
         private final DiskToResponseFunction diskToResponse;
         private final DisksToResponseFunction disksToResponse;
@@ -51,15 +50,5 @@ public class DiskDefaultController implements DiskController{
                                         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
                                 }
                         );
-        }
-
-        @Override
-        public void putDisk(UUID id, PutDiskRequest request) {
-                service.find(id).ifPresentOrElse(
-                        disk -> {throw new ResponseStatusException(HttpStatus.FORBIDDEN);},
-                        ()-> {
-                                service.create(requestToDisk.apply(id,request));
-                        }
-                );
         }
 }

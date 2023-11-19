@@ -1,10 +1,12 @@
-package pg.student.disk.entity;
+package pg.student.aui_spring.disk.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
+import pg.student.aui_spring.application.entity.Application;
 
 @Builder
 @Getter
@@ -17,7 +19,6 @@ import java.util.UUID;
 @Table(name = "disks")
 public class Disk implements Serializable {
     @Id
-    @ToString.Exclude
     private UUID uuid;
 
     @Column
@@ -25,4 +26,9 @@ public class Disk implements Serializable {
 
     @Column(name = "disk_size")
     private int diskSize;
+
+    @OneToMany(mappedBy = "disk", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<Application> applications;
 }
