@@ -9,6 +9,10 @@ import java.util.function.BiFunction;
 public class RequestToDiskFunction implements BiFunction<UUID, PutDiskRequest, Disk> {
     @Override
     public Disk apply(UUID uuid, PutDiskRequest putDiskRequest) {
-        return null;
+        return Disk.builder()
+                .uuid(uuid)
+                .name(putDiskRequest.getName())
+                .diskSize(putDiskRequest.getSize())
+                .build();
     }
 }
