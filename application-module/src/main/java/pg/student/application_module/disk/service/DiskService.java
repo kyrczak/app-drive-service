@@ -1,22 +1,20 @@
-package pg.student.disk.service;
+package pg.student.application_module.disk.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pg.student.disk.event.repository.DiskEventRepository;
-import pg.student.disk.repository.DiskRepository;
-import pg.student.disk.entity.Disk;
+import pg.student.application_module.disk.entity.Disk;
+import pg.student.application_module.disk.repository.DiskRepository;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
 public class DiskService {
-    private final DiskRepository repository;
-    private final DiskEventRepository eventRepository;
+    private DiskRepository repository;
     @Autowired
-    public DiskService(DiskRepository repository, DiskEventRepository eventRepository) {
+    public DiskService(DiskRepository repository) {
         this.repository = repository;
-        this.eventRepository = eventRepository;
     }
     public Optional<Disk> findByName(String diskName) {
         return repository.findDiskByName(diskName);
@@ -29,8 +27,7 @@ public class DiskService {
         repository.save(disk);
     }
 
-    public void delete(UUID id) {
-        repository.findById(id).ifPresent(repository::delete);
-        eventRepository.delete(id);
+    public void delete(String name) {
+        repository.findDiskByName(name).ifPresent(repository::delete);
     }
 }

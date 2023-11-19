@@ -2,9 +2,9 @@ package pg.student.disk.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pg.student.aui_spring.application.dto.GetDiskResponse;
-import pg.student.aui_spring.application.dto.GetDisksResponse;
-import pg.student.aui_spring.application.dto.PutDiskRequest;
+import pg.student.disk.dto.GetDiskResponse;
+import pg.student.disk.dto.GetDisksResponse;
+import pg.student.disk.dto.PutDiskRequest;
 
 import java.util.UUID;
 

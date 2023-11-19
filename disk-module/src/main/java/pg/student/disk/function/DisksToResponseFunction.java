@@ -1,8 +1,8 @@
 package pg.student.disk.function;
 
 import org.springframework.stereotype.Component;
-import pg.student.aui_spring.application.dto.GetDisksResponse;
-
+import pg.student.disk.dto.GetDisksResponse;
+import pg.student.disk.entity.Disk;
 import java.util.List;
 import java.util.function.Function;
 

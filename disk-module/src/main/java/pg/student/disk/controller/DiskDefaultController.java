@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import pg.student.aui_spring.application.dto.GetDiskResponse;
-import pg.student.aui_spring.application.dto.GetDisksResponse;
-import pg.student.aui_spring.application.dto.PutDiskRequest;
+import pg.student.disk.dto.GetDiskResponse;
+import pg.student.disk.dto.GetDisksResponse;
+import pg.student.disk.dto.PutDiskRequest;
+import pg.student.disk.function.DiskToResponseFunction;
+import pg.student.disk.function.DisksToResponseFunction;
+import pg.student.disk.function.RequestToDiskFunction;
+import pg.student.disk.service.DiskService;
 
 import java.util.UUID;
 
@@ -46,7 +50,7 @@ public class DiskDefaultController implements DiskController{
         public void deleteDisk(UUID id) {
                 service.find(id)
                         .ifPresentOrElse(
-                                disk -> service.delete(disk.getName()),
+                                disk -> service.delete(disk.getUuid()),
                                 () -> {
                                         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
                                 }
