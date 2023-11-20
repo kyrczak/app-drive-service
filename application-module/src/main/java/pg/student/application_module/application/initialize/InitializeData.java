@@ -29,18 +29,12 @@ public class InitializeData implements InitializingBean {
         if (diskService.findAll().isEmpty()) {
             Disk software = Disk.builder()
                     .uuid(UUID.fromString("053073ac-6189-411b-b4f8-513742a2b3b1"))
-                    .name("software")
-                    .diskSize(1024)
                     .build();
             Disk firmware = Disk.builder()
                     .uuid(UUID.fromString("2e71dcc4-1845-43ea-aa46-22f2b5595a78"))
-                    .name("firmware")
-                    .diskSize(128)
                     .build();
             Disk games = Disk.builder()
                     .uuid(UUID.fromString("012f799c-8754-4c5d-a997-a9cf83b5ff41"))
-                    .name("games")
-                    .diskSize(512)
                     .build();
 
             diskService.create(software);

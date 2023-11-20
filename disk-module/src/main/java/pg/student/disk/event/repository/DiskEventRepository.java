@@ -7,5 +7,5 @@ import java.util.UUID;
 public interface DiskEventRepository {
     void delete(UUID id);
 
-    void create(Disk disk, UUID id);
+    void create(UUID id);
 }

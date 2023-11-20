@@ -12,7 +12,7 @@ import pg.student.application_module.application.entity.Application;
 @Builder
 @Getter
 @Setter
-@EqualsAndHashCode()
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,12 +21,6 @@ import pg.student.application_module.application.entity.Application;
 public class Disk implements Serializable {
     @Id
     private UUID uuid;
-
-    @Column
-    private String name;
-
-    @Column(name = "disk_size")
-    private int diskSize;
 
     @OneToMany(mappedBy = "disk", cascade = CascadeType.REMOVE)
     @ToString.Exclude

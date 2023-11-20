@@ -27,9 +27,11 @@ public class DiskService {
     }
     public void create(Disk disk) {
         repository.save(disk);
-        eventRepository.create(disk, disk.getUuid());
+        eventRepository.create(disk.getUuid());
     }
-
+    public void initializeCreate(Disk disk) {
+        repository.save(disk);
+    }
     public void delete(UUID id) {
         repository.findById(id).ifPresent(repository::delete);
         eventRepository.delete(id);

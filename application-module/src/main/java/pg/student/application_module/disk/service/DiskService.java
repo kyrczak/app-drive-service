@@ -16,9 +16,6 @@ public class DiskService {
     public DiskService(DiskRepository repository) {
         this.repository = repository;
     }
-    public Optional<Disk> findByName(String diskName) {
-        return repository.findDiskByName(diskName);
-    }
     public Optional<Disk> find(UUID id) {return repository.findById(id);}
     public List<Disk> findAll() {
         return repository.findAll();
@@ -27,7 +24,7 @@ public class DiskService {
         repository.save(disk);
     }
 
-    public void delete(String name) {
-        repository.findDiskByName(name).ifPresent(repository::delete);
+    public void delete(UUID id) {
+        repository.findById(id).ifPresent(repository::delete);
     }
 }

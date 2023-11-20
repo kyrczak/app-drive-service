@@ -37,9 +37,9 @@ public class InitializeData implements InitializingBean {
                     .diskSize(512)
                     .build();
 
-            diskService.create(software);
-            diskService.create(firmware);
-            diskService.create(games);
+            diskService.initializeCreate(software);
+            diskService.initializeCreate(firmware);
+            diskService.initializeCreate(games);
         }
     }
 }

@@ -16,7 +16,6 @@ public class ApplicationToResponseFunction implements Function<Application, GetA
                 .size(application.getApplicationSize())
                 .disk(GetApplicationResponse.Disk.builder()
                         .id(application.getDisk().getUuid())
-                        .name(application.getDisk().getName())
                         .build())
                 .build();
     }

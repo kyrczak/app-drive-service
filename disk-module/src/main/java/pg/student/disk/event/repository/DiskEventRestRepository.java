@@ -25,12 +25,12 @@ public class DiskEventRestRepository implements DiskEventRepository{
     }
 
     @Override
-    public void create(Disk disk, UUID id) {
+    public void create(UUID id) {
         String url = "/api/disks/" + id.toString();
         restTemplate.exchange(
                 url,
                 HttpMethod.PUT,
-                new HttpEntity<>(disk),
+                new HttpEntity<>(id),
                 Void.class
         );
     }

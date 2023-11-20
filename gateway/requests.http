@@ -59,3 +59,23 @@ DELETE http://localhost:8083/api/applications/e12e3cdc-2b9e-4e83-9a7c-4aac3a7a11
 ### Delete disk
 
 DELETE http://localhost:8083/api/disks/053073ac-6189-411b-b4f8-513742a2b3b1
+
+### Add disk
+PUT http://localhost:8083/api/disks/0dcbbbe6-6585-4d70-adcf-30fd47edee5c
+Content-Type: application/json
+
+{
+  "name": "Music",
+  "size": 128
+}
+
+### Add app to the disk
+
+PUT http://localhost:8083/api/applications/af81caff-7c6b-464a-90a6-c9631591bc02
+Content-Type: application/json
+
+{
+  "name": "Musicly",
+  "size": 52,
+  "disk": "0dcbbbe6-6585-4d70-adcf-30fd47edee5c"
+}
