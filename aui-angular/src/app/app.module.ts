@@ -3,16 +3,41 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApplicationViewComponent } from './application/view/application-view/application-view.component';
+import { DiskViewComponent } from './disk/view/disk-view/disk-view.component';
+import { DiskService } from './disk/service/disk.service';
+import { ApplicationService } from './application/service/application.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DiskListComponent } from './disk/view/disk-list/disk-list.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { NavComponent } from './component/nav/nav.component';
+import { MainComponent } from './component/main/main.component';
+import { DiskAddComponent } from './disk/view/disk-add/disk-add.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ApplicationViewComponent,
+    DiskViewComponent,
+    DiskListComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    MainComponent,
+    DiskAddComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DiskService,
+    ApplicationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

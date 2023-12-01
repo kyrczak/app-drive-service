@@ -1,0 +1,29 @@
+<article class="text--justified">
+    <header><h2>Disks</h2></header>
+    <a [routerLink]="['/disks', 'add']">Add Disk</a>
+    <table *ngIf="disks">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>View</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let disk of disks.disks">
+          <td>{{disk.name}} &amp; {{disk.uuid}}</td>
+          <td>
+            <a [routerLink]="['/disks', disk.uuid]">View</a>
+          </td>
+          <td>
+            <a [routerLink]="['/disks', disk.uuid, 'edit']">Edit</a>
+          </td>
+          <td>
+            <button (click)="onDelete(disk)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  

@@ -1,0 +1,20 @@
+<article *ngIf="disk">
+  <header>
+    <h1>{{ disk.name }}</h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="row mb-2">
+          <div class="col-6">
+            Size
+          </div>
+          <div class="col-6">
+            {{ disk.size }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+  
