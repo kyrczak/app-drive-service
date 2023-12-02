@@ -1,4 +1,4 @@
 export interface Application {
-    id: string;
+    uuid: string;
     name: string;
 }

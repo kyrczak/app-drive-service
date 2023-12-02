@@ -1,7 +1,7 @@
 import { Disk } from "../../disk/model/disk";
 
 export interface ApplicationDetails {
-    id: number;
+    uuid: number;
     name: string;
     size: number;
     disk: Disk;

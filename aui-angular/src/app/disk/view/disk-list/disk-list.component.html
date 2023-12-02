@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let disk of disks.disks">
-          <td>{{disk.name}} &amp; {{disk.uuid}}</td>
+          <td>{{disk.name}}</td>
           <td>
             <a [routerLink]="['/disks', disk.uuid]">View</a>
           </td>

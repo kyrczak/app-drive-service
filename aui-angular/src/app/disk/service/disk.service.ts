@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Disks } from '../model/disks';
 import { DiskDetails } from '../model/disk-details';
 import { DiskForm } from '../model/disk-form';
+import { Applications } from 'src/app/application/model/applications';
 
 @Injectable()
 export class DiskService {
@@ -16,6 +17,10 @@ export class DiskService {
 
   getDisk(uuid: string): Observable<DiskDetails> {
     return this.http.get<DiskDetails>('/api/disks/' + uuid);
+  }
+
+  getDisksApplications(uuid: string): Observable<Applications> {
+    return this.http.get<Applications>('/api/disks/' + uuid + '/applications');
   }
 
   deleteDisk(uuid: string): Observable<any> {

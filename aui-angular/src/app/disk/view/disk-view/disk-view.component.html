@@ -2,6 +2,7 @@
   <header>
     <h1>{{ disk.name }}</h1>
   </header>
+  <a [routerLink]="['/disks', disk.uuid, 'add']">Add application</a>
   <div class="container">
     <div class="row">
       <div class="col-4">
@@ -15,6 +16,22 @@
         </div>
       </div>
     </div>
+
+    <table *ngIf="disksApplications">
+        <thead>
+          <tr>
+            <th>Application</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let application of disksApplications.applications">
+            <td>{{ application.name }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteApplicationFromDisk(application)">Delete</button>
+            </td>
+          </tr>
+    </table>
   </div>
 </article>
   

@@ -16,6 +16,7 @@ import { NavComponent } from './component/nav/nav.component';
 import { MainComponent } from './component/main/main.component';
 import { DiskAddComponent } from './disk/view/disk-add/disk-add.component';
 import { DiskEditComponent } from './disk/view/disk-edit/disk-edit.component';
+import { ApplicationAddComponent } from './application/view/application-add/application-add.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DiskEditComponent } from './disk/view/disk-edit/disk-edit.component';
     NavComponent,
     MainComponent,
     DiskAddComponent,
-    DiskEditComponent
+    DiskEditComponent,
+    ApplicationAddComponent
   ],
   imports: [
     BrowserModule,
