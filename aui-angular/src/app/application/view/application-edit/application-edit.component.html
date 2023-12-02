@@ -1,0 +1,32 @@
+<article *ngIf="application">
+    <header><h2>Edit application</h2></header>
+
+    <form class="container" #appForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" [(ngModel)]="application.name" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="size">Size</label>
+                    <input id="size" name="size" [(ngModel)]="application.size" required/>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-4 p-2">
+                <button type="submit">Update</button>
+            </div>
+            <div class="col-4 p-2">
+                <button type="button" (click)="appForm.resetForm(originalApplication)">Reset</button>
+            </div>
+        </div>
+    </form>
+</article>

@@ -5,6 +5,7 @@ import { DiskViewComponent } from './disk/view/disk-view/disk-view.component';
 import { DiskAddComponent } from './disk/view/disk-add/disk-add.component';
 import { DiskEditComponent } from './disk/view/disk-edit/disk-edit.component';
 import { ApplicationAddComponent } from './application/view/application-add/application-add.component';
+import { ApplicationEditComponent } from './application/view/application-edit/application-edit.component';
 
 const routes: Routes = [
   { 
@@ -27,6 +28,10 @@ const routes: Routes = [
     component: DiskViewComponent,
     path: 'disks/:uuid'
   },
+  {
+    component: ApplicationEditComponent,
+    path: 'disks/:uuid/applications/:appuuid/edit'
+  }
 ];
 
 @NgModule({
