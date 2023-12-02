@@ -24,6 +24,7 @@
             <th>Application</th>
             <th>Delete</th>
             <th>Edit</th>
+            <th>View</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +36,8 @@
             <td>
               <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid, 'edit']">Edit</a>
             </td>
+            <td>
+              <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid]">View</a>
           </tr>
     </table>
   </div>
