@@ -25,4 +25,10 @@ export class DiskService {
   putDisk(uuid: string, request: DiskForm): Observable<any> {
     return this.http.put<DiskDetails>('/api/disks/' + uuid, request);
   }
+
+  patchDisk(uuid: string, request: DiskForm): Observable<any> {
+    return this.http.patch<DiskDetails>('/api/disks/' + uuid, request);
+  }
+
+  
 }

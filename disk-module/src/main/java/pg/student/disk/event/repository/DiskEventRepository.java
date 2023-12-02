@@ -8,4 +8,6 @@ public interface DiskEventRepository {
     void delete(UUID id);
 
     void create(UUID id);
+
+    void update(UUID id);
 }

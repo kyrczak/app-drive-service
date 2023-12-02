@@ -27,4 +27,8 @@ public class DiskService {
     public void delete(UUID id) {
         repository.findById(id).ifPresent(repository::delete);
     }
+
+    public void update(Disk disk) {
+        repository.save(disk);
+    }
 }

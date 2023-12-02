@@ -1,5 +1,5 @@
 export interface DiskDetails {
-    id: string;
+    uuid: string;
     name: string;
     size: number;
 }

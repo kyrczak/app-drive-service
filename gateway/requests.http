@@ -79,3 +79,13 @@ Content-Type: application/json
   "size": 52,
   "disk": "0dcbbbe6-6585-4d70-adcf-30fd47edee5c"
 }
+
+### Update disk
+
+PATCH http://localhost:8083/api/disks/053073ac-6189-411b-b4f8-513742a2b3b1
+Content-Type: application/json
+
+{
+  "name": "Other",
+  "size": 256
+}

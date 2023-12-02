@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pg.student.disk.dto.GetDiskResponse;
 import pg.student.disk.dto.GetDisksResponse;
+import pg.student.disk.dto.PatchDiskRequest;
 import pg.student.disk.dto.PutDiskRequest;
 import pg.student.disk.function.DiskToResponseFunction;
 import pg.student.disk.function.DisksToResponseFunction;
@@ -63,6 +64,20 @@ public class DiskDefaultController implements DiskController{
                         disk -> {throw new ResponseStatusException(HttpStatus.FORBIDDEN);},
                         ()-> {
                                 service.create(requestToDisk.apply(id,request));
+                        }
+                );
+        }
+
+        @Override
+        public void patchDisk(UUID id, PatchDiskRequest request) {
+                service.find(id).ifPresentOrElse(
+                        disk -> {
+                                disk.setName(request.getName());
+                                disk.setDiskSize(request.getSize());
+                                service.update(disk);
+                        },
+                        () -> {
+                                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
                         }
                 );
         }
