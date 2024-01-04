@@ -1,0 +1,30 @@
+version: '3'
+
+services: 
+  disk-module:
+    image: disk-module:1.0.0
+    restart: always
+
+  application-module:
+    image: application-module:1.0.0
+    restart: always
+    environment:
+      DISK_MODULE_URL: "http://disk-module:8080"
+
+  gateway-module:
+    image: gateway-module:1.0.0
+    restart: always
+    environment:
+      APPLICATION_MODULE_URL: "http://application-module:8080"
+      DISK_MODULE_URL: "http://disk-module:8080"
+      GATEWAY_MODULE_HOST: "gateway-module:8080"
+  
+  angular-module:
+    image: angular-module:1.0.0
+    restart: always
+    environment:
+      API_URL: "http://gateway-module:8080/api"
+    ports:
+      - "8087:80"
+
+    

@@ -28,7 +28,7 @@ public class ApplicationDefaultController implements ApplicationController {
             ApplicationService service,
             ApplicationToResponseFunction applicationToResponseFunction,
             ApplicationsToResponseFunction applicationsToResponse,
-            RequestToApplicationFunction requestToApplication,
+            RequestToApplicationFunction requestToApplication
     ) {
         this.service = service;
         this.applicationToResponse = applicationToResponseFunction;

@@ -1,5 +1,5 @@
 {
-  "name": "aui-angular",
+  "name": "angular-module",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

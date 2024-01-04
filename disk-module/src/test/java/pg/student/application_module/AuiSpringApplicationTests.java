@@ -1,4 +1,4 @@
-package pg.student.aui_spring;
+package pg.student.application_module;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

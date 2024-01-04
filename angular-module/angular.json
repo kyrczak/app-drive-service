@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aui-angular": {
+    "angular-module": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/aui-angular",
+    
+            "outputPath": "dist/angular-module",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -58,12 +59,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "aui-angular:build:production"
+              "browserTarget": "angular-module:build:production"
             },
             "development": {
-              "browserTarget": "aui-angular:build:development"
+              "browserTarget": "angular-module:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "aui-angular:build"
+            "browserTarget": "angular-module:build"
           }
         },
         "test": {

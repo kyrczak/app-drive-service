@@ -10,13 +10,17 @@
 	</parent>
 
 	<groupId>pg.student</groupId>
-	<artifactId>aui_spring-disk</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>disk-module</artifactId>
+	<version>1.0.0</version>
 
-	<name>aui_spring</name>
+	<name>disk-module</name>
 	<description>Project for Spring Boot, disk module</description>
 	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
+		<start-class>pg.student.AuiSpringDiskApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -60,6 +64,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>pg.student.AuiSpringDiskApplication</mainClass>
+					<layout>JAR</layout>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
