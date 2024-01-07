@@ -1,4 +1,9 @@
 function main() {
+    [System.Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Users\patko\.jdks\temurin-17.0.8.1")
+    [System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable('Path', [System.EnvironmentVariableTarget]::Machine) + ";$($env:JAVA_HOME)\bin")
+
+    .\mvnw clean verify -DskipTests
+
     $title = (Get-Content Dockerfile | Select-String "org.opencontainers.image.title").ToString().Split('=')[1].Trim()
     Write-Host $title
 

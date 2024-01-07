@@ -23,9 +23,9 @@ public class AuiSpringGatewayApplication {
     @Bean
     public RouteLocator routeLocator (
             RouteLocatorBuilder builder,
-            @Value("${spring.application.url}") String applicationUrl,
-            @Value("${spring.disk.url}") String diskUrl,
-            @Value("${spring.gateway.host}") String host
+            @Value("${application.module.url}") String applicationUrl,
+            @Value("${disk.module.url}") String diskUrl,
+            @Value("${gateway.module.host}") String host
     ) {
         return builder.routes()
                 .route("disks", route -> route

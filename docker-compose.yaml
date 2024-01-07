@@ -1,30 +1,74 @@
 version: '3'
 
 services: 
-  disk-module:
-    image: disk-module:1.0.0
-    restart: always
-
-  application-module:
-    image: application-module:1.0.0
+  application-db:
+    image: postgres:16.1
     restart: always
     environment:
-      DISK_MODULE_URL: "http://disk-module:8080"
+      POSTGRES_USER: "applicaton"
+      POSTGRES_PASSWORD: "application_password"
+      POSTGRES_DB: "application_db"
+    volumes:
+      - application-db:/var/lib/postgresql/data
 
-  gateway-module:
-    image: gateway-module:1.0.0
+  disk-db:
+    image: postgres:16.1
+    restart: always
+    environment:
+      POSTGRES_USER: "disk"
+      POSTGRES_PASSWORD: "disk_password"
+      POSTGRES_DB: "disk_db"
+    volumes:
+      - disk-db:/var/lib/postgresql/data
+
+  application-module:
+    build: 
+      context: ./application-module
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://application-db:5432/application_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
+      SPRING_DATASOURCE_USERNAME: "applicaton"
+      SPRING_DATASOURCE_PASSWORD: "application_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+
+  disk-module:
+    build:
+      context: ./disk-module
+      dockerfile: Dockerfile
     restart: always
     environment:
       APPLICATION_MODULE_URL: "http://application-module:8080"
-      DISK_MODULE_URL: "http://disk-module:8080"
-      GATEWAY_MODULE_HOST: "gateway-module:8080"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://disk-db:5432/disk_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "org.postgresql.Driver"
+      SPRING_DATASOURCE_USERNAME: "disk"
+      SPRING_DATASOURCE_PASSWORD: "disk_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
+
   
+  gateway-module:
+    build: 
+      context: ./gateway
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      GATEWAY_MODULE_HOST: "gateway-module:8080"
+      DISK_MODULE_URL: "http://disk-module:8080"
+      APPLICATION_MODULE_URL: "http://application-module:8080"
+  
+
   angular-module:
-    image: angular-module:1.0.0
+    build: 
+      context: ./angular-module
+      dockerfile: Dockerfile
     restart: always
     environment:
       API_URL: "http://gateway-module:8080/api"
     ports:
       - "8087:80"
 
+volumes:
+  application-db:
+  disk-db:
     
