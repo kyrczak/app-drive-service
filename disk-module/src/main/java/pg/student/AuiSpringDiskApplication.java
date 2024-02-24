@@ -15,7 +15,7 @@ public class AuiSpringDiskApplication {
 	}
 
 	@Bean
-	public RestTemplate restTemplate(@Value("${spring.application.url}") String baseUrl) {
+	public RestTemplate restTemplate(@Value("${application.module.url}") String baseUrl) {
 		return new RestTemplateBuilder().rootUri(baseUrl).build();
 	}
 

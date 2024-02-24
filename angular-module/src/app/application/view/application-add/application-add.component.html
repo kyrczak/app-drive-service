@@ -1,0 +1,44 @@
+<article class="text--justified">
+    <header>
+        <h1>Add Disk</h1>
+    </header>
+
+    <form class="container" #diskForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" [(ngModel)]="application.name" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="uuid">UUID</label>
+                    <input id="uuid" name="uuid" [(ngModel)]="uuid" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="size">Size</label>
+                    <input id="size" name="size" [(ngModel)]="application.size" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <button type="submit">Add</button>
+            </div>
+            <div class="col-4 p-2">
+                <button type="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+</article>
+

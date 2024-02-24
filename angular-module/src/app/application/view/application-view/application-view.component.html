@@ -1,0 +1,32 @@
+<article *ngIf="application">
+    <header>
+      <h1>{{ application.name }}</h1>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="row mb-2">
+            <div class="col-6">
+              Size
+            </div>
+            <div class="col-6">
+              {{ application.size }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="disk">
+        <div class="col-4">
+          <div class="row mb-2">
+            <div class="col-6">
+              Disk
+            </div>
+            <div class="col-6">
+              Name: {{ disk.name }} &amp; size: {{ disk.size }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>

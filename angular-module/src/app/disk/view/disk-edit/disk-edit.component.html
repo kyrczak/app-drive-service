@@ -1,0 +1,32 @@
+<article *ngIf="disk">
+    <header><h2>Edit disk</h2></header>
+
+    <form class="container" #diskForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" [(ngModel)]="disk.name" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="size">Size</label>
+                    <input id="size" name="size" [(ngModel)]="disk.size" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 p-2">
+                <button type="submit">Update</button>
+            </div>
+            <div class="col-4 p-2">
+                <button type="button" (click)="diskForm.resetForm(originalDisk)">Reset</button>
+            </div>
+        </div>
+    </form>
+</article>

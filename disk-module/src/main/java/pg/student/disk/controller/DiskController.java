@@ -4,8 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pg.student.disk.dto.GetDiskResponse;
 import pg.student.disk.dto.GetDisksResponse;
+import pg.student.disk.dto.PatchDiskRequest;
 import pg.student.disk.dto.PutDiskRequest;
 
+import javax.sound.midi.Patch;
 import java.util.UUID;
 
 public interface DiskController {
@@ -38,5 +40,16 @@ public interface DiskController {
             UUID id,
             @RequestBody
             PutDiskRequest request
+    );
+
+
+    @PatchMapping("/api/disks/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    void patchDisk(
+            @PathVariable("id")
+            UUID id,
+            @RequestBody
+            PatchDiskRequest request
     );
 }

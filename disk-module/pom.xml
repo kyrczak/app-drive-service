@@ -10,13 +10,14 @@
 	</parent>
 
 	<groupId>pg.student</groupId>
-	<artifactId>aui_spring-disk</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>disk-module</artifactId>
+	<version>1.0.0</version>
 
-	<name>aui_spring</name>
+	<name>disk-module</name>
 	<description>Project for Spring Boot, disk module</description>
 	<properties>
 		<java.version>17</java.version>
+		<start-class>pg.student.AuiSpringDiskApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -24,6 +25,12 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
+		<dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -60,6 +67,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+					</image>
+					<mainClass>pg.student.AuiSpringDiskApplication</mainClass>
+					<layout>JAR</layout>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

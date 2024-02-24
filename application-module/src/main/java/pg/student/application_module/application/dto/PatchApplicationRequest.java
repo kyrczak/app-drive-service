@@ -2,6 +2,8 @@ package pg.student.application_module.application.dto;
 
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Builder
@@ -12,4 +14,5 @@ import lombok.*;
 public class PatchApplicationRequest {
     private String name;
     private int size;
+    private UUID diskUUID;
 }

@@ -12,6 +12,7 @@ import pg.student.application_module.application.function.ApplicationToResponseF
 import pg.student.application_module.application.function.ApplicationsToResponseFunction;
 import pg.student.application_module.application.function.RequestToApplicationFunction;
 import pg.student.application_module.application.service.ApplicationService;
+import pg.student.application_module.disk.service.DiskService;
 
 import java.util.UUID;
 
