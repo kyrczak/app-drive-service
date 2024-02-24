@@ -1,4 +1,4 @@
-package student.pg;
+package pg.student.aui_spring.dto;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
