@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "applications")
-public class Application implements Comparable, Serializable {
+public class Application implements Serializable {
     @Id
     @ToString.Exclude
     private UUID uuid;
@@ -27,10 +27,4 @@ public class Application implements Comparable, Serializable {
     @ManyToOne
     @JoinColumn(name = "disk")
     private Disk disk;
-
-    @Override
-    public int compareTo(Object o) {
-        Application c = (Application) o;
-        return this.getApplicationSize() - c.getApplicationSize();
-    }
 }

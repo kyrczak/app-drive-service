@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "disks")
-public class Disk implements Comparable, Serializable {
+public class Disk implements Serializable {
     @Id
     @ToString.Exclude
     private UUID uuid;
@@ -26,14 +26,8 @@ public class Disk implements Comparable, Serializable {
     @Column(name = "disk_size")
     private int diskSize;
 
-    @OneToMany(mappedBy = "disk")
+    @OneToMany(mappedBy = "disk", cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Application> applications;
-
-    @Override
-    public int compareTo(Object o) {
-        Disk p = (Disk) o;
-        return this.getDiskSize() - p.getDiskSize();
-    }
 }
