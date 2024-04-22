@@ -1,4 +1,4 @@
-# Application-Manager
+# App Drive Service
 
 ## Description
 College assignment introducing microservice web infrastructure. The app allows for creation of **drives** and saving **applications** in them.
