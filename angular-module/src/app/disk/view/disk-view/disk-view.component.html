@@ -1,8 +1,8 @@
 <article *ngIf="disk">
   <header>
-    <h1>{{ disk.name }}</h1>
+    <h1 class="font-semibold text-xl">{{ disk.name }}</h1>
   </header>
-  <a [routerLink]="['/disks', disk.uuid, 'add']">Add application</a>
+  <a [routerLink]="['/disks', disk.uuid, 'add']" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Add application</a>
   
   <div class="container">
     <div class="row">
@@ -28,16 +28,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let application of disksApplications.applications">
+          <tr *ngFor="let application of disksApplications.applications" class="p-1">
             <td>{{ application.name }}</td>
             <td>
-              <button class="btn btn-danger" (click)="deleteApplicationFromDisk(application)">Delete</button>
+              <button class="btn btn-danger" (click)="deleteApplicationFromDisk(application)" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Delete</button>
             </td>
             <td>
-              <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid, 'edit']">Edit</a>
+              <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid, 'edit']" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Edit</a>
             </td>
             <td>
-              <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid]">View</a>
+              <a [routerLink]="['/disks', disk.uuid, 'applications', application.uuid]" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">View</a>
           </tr>
     </table>
   </div>

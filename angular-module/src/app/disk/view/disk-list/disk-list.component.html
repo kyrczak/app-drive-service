@@ -1,6 +1,6 @@
-<article class="text--justified">
-    <header><h2>Disks</h2></header>
-    <a [routerLink]="['/disks', 'add']">Add Disk</a>
+<article class="text--justified m-2">
+    <header><h2 class="text-xl m-4">Drives</h2></header>
+    <a [routerLink]="['/disks', 'add']" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Add drive</a>
     <table *ngIf="disks">
       <thead>
         <tr>
@@ -14,13 +14,13 @@
         <tr *ngFor="let disk of disks.disks">
           <td>{{disk.name}}</td>
           <td>
-            <a [routerLink]="['/disks', disk.uuid]">View</a>
+            <a [routerLink]="['/disks', disk.uuid]" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">View</a>
           </td>
           <td>
-            <a [routerLink]="['/disks', disk.uuid, 'edit']">Edit</a>
+            <a [routerLink]="['/disks', disk.uuid, 'edit']" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Edit</a>
           </td>
           <td>
-            <button (click)="onDelete(disk)">Delete</button>
+            <button (click)="onDelete(disk)" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Delete</button>
           </td>
         </tr>
       </tbody>
