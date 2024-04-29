@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let application of disksApplications.applications" class="p-1">
+          <tr *ngFor="let application of disksApplications.applications" class="p-2">
             <td>{{ application.name }}</td>
             <td>
               <button class="btn btn-danger" (click)="deleteApplicationFromDisk(application)" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Delete</button>
