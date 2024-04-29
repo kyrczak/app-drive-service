@@ -11,6 +11,7 @@ Every creation of a new **app** or new **disk** is stored on a local database an
 - Angular
 - Docker
 - PostgresSQL
+- Tailwind CSS
 
 ## Setup
 Requirements:
