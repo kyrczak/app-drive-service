@@ -22,9 +22,7 @@ services:
       - disk-db:/var/lib/postgresql/data
 
   application-module:
-    build: 
-      context: ./application-module
-      dockerfile: Dockerfile
+    image: application-module:1.0.0
     restart: always
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://application-db:5432/application_db"
@@ -34,9 +32,7 @@ services:
       SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"
 
   disk-module:
-    build:
-      context: ./disk-module
-      dockerfile: Dockerfile
+    image: disk-module:1.0.0
     restart: always
     environment:
       APPLICATION_MODULE_URL: "http://application-module:8080"
@@ -48,9 +44,7 @@ services:
 
   
   gateway-module:
-    build: 
-      context: ./gateway
-      dockerfile: Dockerfile
+    image: gateway-module:1.0.0
     restart: always
     environment:
       GATEWAY_MODULE_HOST: "gateway-module:8080"
@@ -59,9 +53,7 @@ services:
   
 
   angular-module:
-    build: 
-      context: ./angular-module
-      dockerfile: Dockerfile
+    image: angular-module:1.0.0
     restart: always
     environment:
       API_URL: "http://gateway-module:8080/api"

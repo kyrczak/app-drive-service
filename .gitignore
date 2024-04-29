@@ -65,6 +65,7 @@ angular-module/.angular/cache
 /libpeerconnection.log
 testem.log
 /typings
+/angular-module/dist/*
 
 # System files
 .DS_Store

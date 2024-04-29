@@ -1,12 +1,12 @@
-<article *ngIf="disk">
-    <header><h2>Edit disk</h2></header>
+<article *ngIf="disk" class="py-4">
+    <header><h2 class="font-semibold text-xl">Edit disk</h2></header>
 
     <form class="container" #diskForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-4 p-2">
                 <div>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" [(ngModel)]="disk.name" required/>
+                    <label for="name" class="p-2">Name</label>
+                    <input id="name" name="name" [(ngModel)]="disk.name" required class="rounded-sm px-1 text-black"/>
                 </div>
             </div>
         </div>
@@ -14,18 +14,18 @@
         <div class="row">
             <div class="col-4 p-2">
                 <div>
-                    <label for="size">Size</label>
-                    <input id="size" name="size" [(ngModel)]="disk.size" required/>
+                    <label for="size" class="p-2">Size</label>
+                    <input id="size" name="size" [(ngModel)]="disk.size" required class="rounded-sm px-1 text-black"/>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-4 p-2">
-                <button type="submit">Update</button>
+                <button type="submit" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600">Update</button>
             </div>
             <div class="col-4 p-2">
-                <button type="button" (click)="diskForm.resetForm(originalDisk)">Reset</button>
+                <button type="button" class="rounded-sm p-1 text-slate-600 bg-slate-200 hover:text-white hover:bg-slate-600" (click)="diskForm.resetForm(originalDisk)">Reset</button>
             </div>
         </div>
     </form>
